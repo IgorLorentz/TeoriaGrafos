@@ -1,15 +1,15 @@
 # Teoria de Grafos
 
 ## Resumo
+Esse trabalho tem como objetivo demonstrar de forma prática os conceitos de teoria de grafos aprendidos em classe ao longo do semestre. Foram escolhidos como objeto de estudo para esse trabalho as definições de **Grafos Eulerianos** (Tipo de Grafos), **Dijkstra** (Caminhos Mínimos), **Busca em Amplitude** (Busca em Grafos) e **Prim** (Árvore Geradora Mínima).
 
-### Algoritimo 1
-
-
-### Algoritimo 2
+### Algoritimo Euleriano
 
 
-### Algoritimo 3
+### Algoritimo Breath-First Search (BFS)
 
 
-### Algoritimo 4
+### Algoritimo de Dijkstra
 
+
+### Algoritimo de Prim
