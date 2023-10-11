@@ -18,9 +18,9 @@ public class BreathFirstSearch
 
         while(!fila.isEmpty())
         {
-            novoVertice = fila.peek();
+            novoVertice = fila.poll();
 
-            for(int i = novoVertice; i < qntVertices; i++)
+            for(int i = novoVertice; i == novoVertice; i++)
             {
                 for(int j = 0; j < qntVertices; j++)
                 {
@@ -36,7 +36,14 @@ public class BreathFirstSearch
 
         for(int i = 0; i < qntVertices; i++)
         {
-            System.out.println(visitado[i] + "\n" + antecessor[i]);
+            System.out.printf("%b ", visitado[i]);
+        }
+
+        System.out.println();
+
+        for(int i = 0; i < qntVertices; i++)
+        {
+            System.out.printf("%d    ", antecessor[i]);
         }
     }
 }

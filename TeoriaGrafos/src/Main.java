@@ -23,6 +23,11 @@ public class Main
                 {0, 0, 0, 1, 1, 1, 1, 0}};
 
         MostrarGrafo(matrizAdjacencia);
+
+        System.out.println();
+
+        BreathFirstSearch bfs = new BreathFirstSearch();
+        bfs.Bucar(matrizAdjacencia, 0);
     }
 
     private static void MostrarGrafo(int[][] grafo)
