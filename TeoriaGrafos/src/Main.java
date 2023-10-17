@@ -13,14 +13,14 @@ public class Main
                 {0, 0, 0, 1, 1, 1, 1, 0}};
 
         int[][] matrizIncidencia =
-                {{0, 1, 1, 1, 0, 0, 0,0},
-                {1, 0, 1, 0, 0, 0, 1, 0},
-                {1, 1, 0, 0, 1, 1, 1, 0},
-                {1, 0, 0, 0, 0, 1, 0, 1},
-                {0, 0, 1, 0, 0, 0, 1, 1},
+                {{0, 1, 1, 1, 0, 0, 1,0},
+                {1, 0, 1, 0, 0, 0, 1, 1},
+                {1, 1, 0, 0, 1, 1, 1, 1},
+                {1, 0, 0, 0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0, 0, 0, 1},
                 {0, 0, 1, 1, 0, 0, 1, 1},
-                {0, 1, 1, 0, 1, 1, 0, 1},
-                {0, 0, 0, 1, 1, 1, 1, 0}};
+                {1, 1, 1, 0, 0, 1, 0, 0},
+                {0, 1, 1, 0, 1, 1, 0, 0}};
 
         MostrarGrafo(matrizAdjacencia);
 
@@ -28,6 +28,10 @@ public class Main
 
         BreathFirstSearch bfs = new BreathFirstSearch();
         bfs.Bucar(matrizAdjacencia, 0);
+
+        Euleriano eulerian = new Euleriano();
+        eulerian.CountDegree(matrizIncidencia);
+
     }
 
     private static void MostrarGrafo(int[][] grafo)

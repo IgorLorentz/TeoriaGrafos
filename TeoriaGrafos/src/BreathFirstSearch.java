@@ -45,5 +45,7 @@ public class BreathFirstSearch
         {
             System.out.printf("%d    ", antecessor[i]);
         }
+
+        System.out.println();
     }
 }
