@@ -30,8 +30,9 @@ public class Main
         bfs.Bucar(matrizAdjacencia, 0);
 
         Euleriano eulerian = new Euleriano();
-        eulerian.CountDegree(matrizIncidencia);
-
+        eulerian.CountDegree(matrizAdjacencia);
+        Dijkstra djk = new Dijkstra();
+        djk.CalculateDijkstra(matrizAdjacencia,0);
     }
 
     private static void MostrarGrafo(int[][] grafo)
