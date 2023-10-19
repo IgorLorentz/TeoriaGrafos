@@ -7,25 +7,26 @@ public class Prim
     {
         int qntVertices = grafo.length;
 
+        int[] antecessor = new int[qntVertices];
         Queue<Integer> fila = new LinkedList<>();
         Queue<Integer> ordem = new LinkedList<>();
-        int[] visitado = new int[qntVertices];
 
         for (int i = 0; i < qntVertices; i++)
         {
             if (i == vertice)
-                visitado[i] = 0;
+                antecessor[i] = 0;
             else
-                visitado[i] = -1;
+                antecessor[i] = -1;
         }
 
-        int aux = vertice;
+        int verticeAtual = vertice;
+        int menor = 99999;
+        int caminho;
+        Queue<Integer> novaFila = new LinkedList<>();
 
-        while (visitado[aux] != -1)
+        do
         {
-            ordem.add(aux);
-
-            for (int i = vertice; i == vertice; i++)
+            for (int i = verticeAtual; i == verticeAtual; i++)
             {
                 for (int j = 0; j < qntVertices; j++)
                 {
@@ -36,31 +37,38 @@ public class Prim
                 }
             }
 
-            int menor = 99999;
-            int caminho;
-            var novaFila = fila;
+            novaFila = fila;
 
-            for(int i = 0; i < fila.size(); i++)
+            if(!novaFila.isEmpty())
             {
-                caminho = novaFila.poll();
+                for(int i = 0; i < fila.size(); i++)
+                {
+                    caminho = novaFila.poll();
 
-                if(caminho < menor)
-                    menor = caminho;
+                    if(caminho < menor)
+                        menor = caminho;
+                }
             }
-            /*
-            for(int i = 0; i < visitado.length; i++)
-            {
-                System.out.println(visitado[i]);
-            }
-            */
 
-            aux = menor;
+            ordem.add(verticeAtual);
+            verticeAtual = menor;
+            menor = 99999;
+        }
+        while (antecessor[verticeAtual] != -1);
+        
+        /*
+        System.out.print("Antecessor: ");
+        for(int i = 0; i < antecessor.length; i++)
+        {
+            System.out.print(antecessor[i] + " ");
         }
 
-        /*
+        System.out.println();
+
+        System.out.print("Ordem: ");
         for(int i = 0; i < ordem.size(); i++)
         {
-            System.out.println(ordem.poll());
+            System.out.print(ordem.poll() + " ");
         }
         */
     }
