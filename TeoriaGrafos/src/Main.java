@@ -30,22 +30,23 @@ public class Main
                 {3, 0, 6, 0, 0, 2},
                 {0, 0, 3, 6, 2, 0}};
 
-        /*
+
         MostrarGrafo(matrizAdj1);
         System.out.println();
         MostrarGrafo(matrizAdj2);
-
         System.out.println();
-
+        MostrarGrafo(matrizAdj3);
+/*
         BreathFirstSearch bfs = new BreathFirstSearch();
         bfs.Bucar(matrizAdj1, 0);
 
         Euleriano eulerian = new Euleriano();
         eulerian.CountDegree(matrizAdj2);
-        */
+
 
         Prim prim = new Prim();
         prim.ArvoreGeradora(matrizAdj3, 0);
+        */
     }
 
     private static void MostrarGrafo(int[][] grafo)

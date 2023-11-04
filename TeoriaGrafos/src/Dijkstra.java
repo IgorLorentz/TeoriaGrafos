@@ -1,18 +1,30 @@
 public class Dijkstra {
-    // Aplica o algoritimo de Dujkstra
+    // Aplica o algoritimo de Dijkstra
     public void CalculateDijkstra(int [][] matriz, int initialPosition){
     int cost [] = new int[matriz.length -1];
     int border [] =new int [matriz.length -1];
     int antecessor [] = new int[matriz.length -1];
+    int inclued [] = new int[matriz.length -1];
+    int position = 0;
 
-    
-
+    //Inicializa os vetores
+    border [position] = initialPosition;
+    antecessor [initialPosition] = -1;
     cost[initialPosition] = 0;
+
     for(int i=0; i<cost.length; i++){
         cost[i] = Integer.MAX_VALUE;
     }
 
-
+    //Adiciona os adjacentes a v0 na borda
+        for (int i = 0; i < matriz.length; i++) { //talvez for each com a borda
+            for (int j = 0; j < matriz[i].length; j++) {
+                if(matriz[i][j] > 0){
+                    position++;
+                    border[position]= matriz[i][j];
+                }
+            }
+        }
 
 
 
