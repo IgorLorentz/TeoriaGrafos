@@ -45,7 +45,7 @@ public class Main
         */
 
         Prim prim = new Prim();
-        prim.ArvoreGeradora(matrizAdj3, 0);
+        prim.ArvoreGeradoraMinima(matrizAdj3, 0);
     }
 
     private static void MostrarGrafo(int[][] grafo)

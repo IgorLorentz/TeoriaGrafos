@@ -3,60 +3,90 @@ import java.util.Queue;
 
 public class Prim
 {
-    public void ArvoreGeradora(int grafo[][], int vertice)
+    public void ArvoreGeradoraMinima(int[][] grafo, int verticeInicial)
     {
         int qntVertices = grafo.length;
 
         int[] antecessor = new int[qntVertices];
-        Queue<Integer> fila = new LinkedList<>();
+        Queue<Caminho> caminhos = new LinkedList<>();
         Queue<Integer> ordem = new LinkedList<>();
 
-        for (int i = 0; i < qntVertices; i++)
+        for(int i = 0; i < qntVertices; i++)
         {
-            if (i == vertice)
+            if(i == verticeInicial)
                 antecessor[i] = 0;
             else
                 antecessor[i] = -1;
         }
 
-        int verticeAtual = vertice;
+        Queue<Caminho> auxCaminhos = new LinkedList<>();
+        int verticeAtual = verticeInicial;
+        Caminho caminho;
+        Caminho auxCaminho;
+        Caminho menorCaminho = null;
+        int qntCaminhos;
         int menor = 99999;
-        int caminho;
-        Queue<Integer> novaFila = new LinkedList<>();
 
         do
         {
-            for (int i = verticeAtual; i == verticeAtual; i++)
+            if(!ordem.contains(verticeAtual))
+                ordem.add(verticeAtual);
+
+            for(int i = verticeAtual; i == verticeAtual; i++)
             {
-                for (int j = 0; j < qntVertices; j++)
+                for(int j = 0; j < qntVertices; j++)
                 {
-                    if (grafo[i][j] != 0)
+                    if(grafo[i][j] != 0 && antecessor[j] == -1)
                     {
-                        fila.add(grafo[i][j]);
+                        caminho = new Caminho(i, j, grafo[i][j]);
+                        caminhos.add(caminho);
                     }
                 }
             }
 
-            novaFila = fila;
+            auxCaminhos.addAll(caminhos);
+            qntCaminhos = auxCaminhos.size();
 
-            if(!novaFila.isEmpty())
+            for(int i = 0; i < qntCaminhos; i++)
             {
-                for(int i = 0; i < fila.size(); i++)
-                {
-                    caminho = novaFila.poll();
+                auxCaminho = auxCaminhos.poll();
 
-                    if(caminho < menor)
-                        menor = caminho;
+                if(auxCaminho.peso < menor)
+                {
+                    menor = auxCaminho.peso;
+                    menorCaminho = auxCaminho;
                 }
             }
 
-            ordem.add(verticeAtual);
-            verticeAtual = menor;
+            verticeAtual = menorCaminho.destino;
+
+            if(antecessor[menorCaminho.destino] == -1)
+                antecessor[menorCaminho.destino] = menorCaminho.origem;
+
+            qntCaminhos = caminhos.size();
+
+            for(int i = 0; i < qntCaminhos; i++)
+            {
+                auxCaminho = caminhos.poll();
+
+                if(menorCaminho != auxCaminho)
+                    caminhos.add(auxCaminho);
+            }
+
             menor = 99999;
         }
-        while (antecessor[verticeAtual] != -1);
-        
-        /*
+        while(!caminhos.isEmpty());
+
+        qntCaminhos = ordem.size();
+
+        System.out.print("Ordem: ");
+        for(int i = 0; i < qntCaminhos; i++)
+        {
+            System.out.print(ordem.poll() + " ");
+        }
+
+        System.out.println();
+
         System.out.print("Antecessor: ");
         for(int i = 0; i < antecessor.length; i++)
         {
@@ -64,12 +94,5 @@ public class Prim
         }
 
         System.out.println();
-
-        System.out.print("Ordem: ");
-        for(int i = 0; i < ordem.size(); i++)
-        {
-            System.out.print(ordem.poll() + " ");
-        }
-        */
     }
 }

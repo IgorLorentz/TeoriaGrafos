@@ -3,15 +3,15 @@ import java.util.Queue;
 
 public class BreathFirstSearch
 {
-    public void Bucar(int[][] grafo, int vertice)
+    public void Bucar(int[][] grafo, int verticeInicial)
     {
         int qntVertices = grafo.length;
 
         boolean[] visitado = new boolean[qntVertices];
-        visitado[vertice] = true;
+        visitado[verticeInicial] = true;
 
         Queue<Integer> fila = new LinkedList<>();
-        fila.add(vertice);
+        fila.add(verticeInicial);
 
         int novoVertice;
         int[] antecessor = new int[qntVertices];
