@@ -30,22 +30,36 @@ public class Main
                 {3, 0, 6, 0, 0, 2},
                 {0, 0, 3, 6, 2, 0}};
 
+        int[][] matrizAdj4 =
+                {{0, 6, 0, 0, 5},
+                 {0, 0, 0, 3, 0},
+                 {5, 0, 0, 0, 0},
+                 {5, 0, 6, 0, 3},
+                 {0, 0, 2, 6, 0}};
+
         /*
         MostrarGrafo(matrizAdj1);
         System.out.println();
         MostrarGrafo(matrizAdj2);
-
         System.out.println();
-
+        MostrarGrafo(matrizAdj3);
+        System.out.println();
+        */
+        //MostrarGrafo(matrizAdj4);
+        /*
         BreathFirstSearch bfs = new BreathFirstSearch();
         bfs.Bucar(matrizAdj1, 0);
 
         Euleriano eulerian = new Euleriano();
         eulerian.CountDegree(matrizAdj2);
-        */
+
 
         Prim prim = new Prim();
         prim.ArvoreGeradoraMinima(matrizAdj3, 0);
+        */
+
+        Dijkstra djk = new Dijkstra();
+        djk.CalculateDijkstra(matrizAdj4,0);
     }
 
     private static void MostrarGrafo(int[][] grafo)

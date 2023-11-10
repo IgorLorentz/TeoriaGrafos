@@ -1,30 +1,72 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class Dijkstra {
     // Aplica o algoritimo de Dijkstra
     public void CalculateDijkstra(int [][] matriz, int initialPosition){
-    int cost [] = new int[matriz.length -1];
-    int border [] =new int [matriz.length -1];
-    int antecessor [] = new int[matriz.length -1];
-    int inclued [] = new int[matriz.length -1];
+    int cost [] = new int[matriz.length];
+    List <Caminho> border = new ArrayList<>();
+    List <Caminho> ordenationBorder = new ArrayList<>();
+    int antecessor [] = new int[matriz.length];
+    int inclued [] = new int[matriz.length];
     int position = 0;
-
-    //Inicializa os vetores
-    border [position] = initialPosition;
-    antecessor [initialPosition] = -1;
-    cost[initialPosition] = 0;
+    Caminho c;
+    //Inicializa variáveis
 
     for(int i=0; i<cost.length; i++){
         cost[i] = Integer.MAX_VALUE;
     }
+    for(int i=0; i<antecessor.length; i++) {
+        antecessor[i] = -1;
+    }
+    cost[initialPosition] = 0;
+    antecessor [initialPosition] = -1;
 
-    //Adiciona os adjacentes a v0 na borda
-        for (int i = 0; i < matriz.length; i++) { //talvez for each com a borda
+    //Loop da borda
+    int actualVertice = initialPosition;
+    Caminho shortestPath;
+    int size = 0;
+    int menor = Integer.MAX_VALUE;
+    do{
+
+        for (int i = actualVertice; i == actualVertice; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
-                if(matriz[i][j] > 0){
-                    position++;
-                    border[position]= matriz[i][j];
+                if (matriz[i][j] > 0) {
+                    ordenationBorder.add(c = new Caminho(actualVertice, j,matriz[i][j]));
+
                 }
             }
         }
+
+        if(!ordenationBorder.isEmpty()) {
+            for(int i = 0; i < ordenationBorder.size(); i++){
+                for(int j = i; j < ordenationBorder.size(); j++){
+                    if(ordenationBorder.get(i).peso > ordenationBorder.get(j).peso){
+                        shortestPath = ordenationBorder.get(j);
+                        ordenationBorder.set(j, ordenationBorder.get(i));
+                        ordenationBorder.set(i, shortestPath);
+                    }
+                }
+            }
+        }
+        border.addAll(ordenationBorder);
+        ordenationBorder.clear();
+        //Adiciona custo
+        cost[border.get(0).destino] = border.get(0).peso;
+
+        //Adiciona o antecessor
+        antecessor[border.get(0).destino] = actualVertice;
+        actualVertice = border.get(0).destino;
+
+        //Adiciona incluidos e retira da borda
+        inclued[border.get(0).destino] = border.get(0).origem;
+        border.remove(0);
+    }
+    while(!border.isEmpty());
+
+
 
 
 
