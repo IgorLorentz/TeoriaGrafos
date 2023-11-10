@@ -10,4 +10,10 @@ public class Caminho
         this.destino = destino;
         this.peso = peso;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Origem: " + origem + " | Destino: " + destino + " | Peso: " + peso + "\n";
+    }
 }
