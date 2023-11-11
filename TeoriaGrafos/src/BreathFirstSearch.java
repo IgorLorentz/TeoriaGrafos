@@ -44,7 +44,7 @@ public class BreathFirstSearch
         System.out.print("Vértice:    | ");
         for(int i = 0; i < qntVertices; i++)
         {
-            System.out.print(i + "    ");
+            System.out.print(i + " ");
         }
 
         System.out.println();
@@ -52,7 +52,10 @@ public class BreathFirstSearch
         System.out.print("Visitado:   | ");
         for(int i = 0; i < qntVertices; i++)
         {
-            System.out.printf("%b ", visitado[i]);
+            if(visitado[i])
+                System.out.print("V ");
+            else
+                System.out.print("F ");
         }
 
         System.out.println();
@@ -60,7 +63,7 @@ public class BreathFirstSearch
         System.out.print("Antecessor: | ");
         for(int i = 0; i < qntVertices; i++)
         {
-            System.out.printf("%d    ", antecessor[i]);
+            System.out.print(antecessor[i] + " ");
         }
 
         System.out.println();

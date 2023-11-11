@@ -44,18 +44,17 @@ public class Main
         System.out.println();
         MostrarGrafo(matrizAdj3);
         System.out.println();
+        MostrarGrafo(matrizAdj4);
         */
-        //MostrarGrafo(matrizAdj4);
-        /*
+
         Euleriano eulerian = new Euleriano();
         eulerian.CountDegree(matrizAdj2);
 
-        Dijkstra djk = new Dijkstra();
-        djk.CalculateDijkstra(matrizAdj4,0);
-        */
-
         BreathFirstSearch bfs = new BreathFirstSearch();
         bfs.Bucar(matrizAdj1, 0);
+
+        Dijkstra djk = new Dijkstra();
+        djk.CalculateDijkstra(matrizAdj4,0);
 
         Prim prim = new Prim();
         prim.ArvoreGeradoraMinima(matrizAdj3, 0);

@@ -86,6 +86,14 @@ public class Prim
     {
         System.out.println("Algoritmo de Prim:");
 
+        System.out.print("Vértice:    | ");
+        for (int i = 0; i < qntCaminhos; i++)
+        {
+            System.out.print(i + " ");
+        }
+
+        System.out.println();
+
         System.out.print("Ordem:      | ");
         for(int i = 0; i < qntCaminhos; i++)
         {

@@ -1,5 +1,4 @@
 public class Euleriano{
-
     // verifica o grau do vértice
     public void CountDegree(int [][] matriz){
         int grauVertice [] = new int [matriz.length];
@@ -10,8 +9,10 @@ public class Euleriano{
                 }
             }
         }
+
         VerifyEulerian(grauVertice);
     }
+
     //verifica se é euleriano
     public void VerifyEulerian(int [] grau){
        int count = -1;
@@ -26,14 +27,17 @@ public class Euleriano{
                 break;
             }
         }
-        if(eulerian == true)
-            System.out.println("É euleriano");
 
-        else
-            System.out.println("Não é euleriano");
+        Imprimir(eulerian);
     }
 
+    void Imprimir(boolean eulerian)
+    {
+        System.out.println("Grafo Euleriano:");
 
+        if(eulerian == true)
+            System.out.println("O grafo é euleriano!");
+        else
+            System.out.println("O grafo não é euleriano!");
+    }
 }
-
-
