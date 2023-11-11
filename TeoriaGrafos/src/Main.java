@@ -47,19 +47,18 @@ public class Main
         */
         //MostrarGrafo(matrizAdj4);
         /*
-        BreathFirstSearch bfs = new BreathFirstSearch();
-        bfs.Bucar(matrizAdj1, 0);
-
         Euleriano eulerian = new Euleriano();
         eulerian.CountDegree(matrizAdj2);
 
+        Dijkstra djk = new Dijkstra();
+        djk.CalculateDijkstra(matrizAdj4,0);
+        */
+
+        BreathFirstSearch bfs = new BreathFirstSearch();
+        bfs.Bucar(matrizAdj1, 0);
 
         Prim prim = new Prim();
         prim.ArvoreGeradoraMinima(matrizAdj3, 0);
-        */
-
-        Dijkstra djk = new Dijkstra();
-        djk.CalculateDijkstra(matrizAdj4,0);
     }
 
     private static void MostrarGrafo(int[][] grafo)

@@ -79,7 +79,14 @@ public class Prim
 
         qntCaminhos = ordem.size();
 
-        System.out.print("Ordem: ");
+        Imprimir(ordem, antecessor, qntCaminhos);
+    }
+
+    void Imprimir(Queue ordem, int[] antecessor, int qntCaminhos)
+    {
+        System.out.println("Algoritmo de Prim:");
+
+        System.out.print("Ordem:      | ");
         for(int i = 0; i < qntCaminhos; i++)
         {
             System.out.print(ordem.poll() + " ");
@@ -87,7 +94,7 @@ public class Prim
 
         System.out.println();
 
-        System.out.print("Antecessor: ");
+        System.out.print("Antecessor: | ");
         for(int i = 0; i < antecessor.length; i++)
         {
             System.out.print(antecessor[i] + " ");
