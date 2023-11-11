@@ -2,17 +2,12 @@ public class Main
 {
     public static void main(String[] args)
     {
-        int[][] matrizAdj1 =
-                {{0, 1, 1, 1, 0, 0, 0,0},
-                {1, 0, 1, 0, 0, 0, 1, 0},
-                {1, 1, 0, 0, 1, 1, 1, 0},
-                {1, 0, 0, 0, 0, 1, 0, 1},
-                {0, 0, 1, 0, 0, 0, 1, 1},
-                {0, 0, 1, 1, 0, 0, 1, 1},
-                {0, 1, 1, 0, 1, 1, 0, 1},
-                {0, 0, 0, 1, 1, 1, 1, 0}};
+        Default();
+    }
 
-        int[][] matrizAdj2 =
+    private static void Default()
+    {
+        final int[][] matrizAdj1 =
                 {{0, 1, 1, 1, 0, 0, 1,0},
                 {1, 0, 1, 0, 0, 0, 1, 1},
                 {1, 1, 0, 0, 1, 1, 1, 1},
@@ -22,7 +17,24 @@ public class Main
                 {1, 1, 1, 0, 0, 1, 0, 0},
                 {0, 1, 1, 0, 1, 1, 0, 0}};
 
-        int[][] matrizAdj3 =
+        final int[][] matrizAdj2 =
+                {{0, 1, 1, 1, 0, 0, 0,0},
+                {1, 0, 1, 0, 0, 0, 1, 0},
+                {1, 1, 0, 0, 1, 1, 1, 0},
+                {1, 0, 0, 0, 0, 1, 0, 1},
+                {0, 0, 1, 0, 0, 0, 1, 1},
+                {0, 0, 1, 1, 0, 0, 1, 1},
+                {0, 1, 1, 0, 1, 1, 0, 1},
+                {0, 0, 0, 1, 1, 1, 1, 0}};
+
+        final int[][] matrizAdj3 =
+                {{0, 6, 0, 0, 5},
+                {0, 0, 0, 3, 0},
+                {5, 0, 0, 0, 0},
+                {5, 0, 6, 0, 3},
+                {0, 0, 2, 6, 0}};
+
+        final int[][] matrizAdj4 =
                 {{0, 4, 2, 0, 3,0},
                 {4, 0, 0, 5, 0, 0},
                 {2, 0, 0, 1, 6, 3},
@@ -30,34 +42,32 @@ public class Main
                 {3, 0, 6, 0, 0, 2},
                 {0, 0, 3, 6, 2, 0}};
 
-        int[][] matrizAdj4 =
-                {{0, 6, 0, 0, 5},
-                 {0, 0, 0, 3, 0},
-                 {5, 0, 0, 0, 0},
-                 {5, 0, 6, 0, 3},
-                 {0, 0, 2, 6, 0}};
-
-        /*
         MostrarGrafo(matrizAdj1);
+        System.out.println();
+
+        Euleriano eulerian = new Euleriano();
+        eulerian.CountDegree(matrizAdj1);
+
         System.out.println();
         MostrarGrafo(matrizAdj2);
         System.out.println();
-        MostrarGrafo(matrizAdj3);
-        System.out.println();
-        MostrarGrafo(matrizAdj4);
-        */
-
-        Euleriano eulerian = new Euleriano();
-        eulerian.CountDegree(matrizAdj2);
 
         BreathFirstSearch bfs = new BreathFirstSearch();
-        bfs.Bucar(matrizAdj1, 0);
+        bfs.Bucar(matrizAdj2, 0);
+
+        System.out.println();
+        MostrarGrafo(matrizAdj3);
+        System.out.println();
 
         Dijkstra djk = new Dijkstra();
-        djk.CalculateDijkstra(matrizAdj4,0);
+        djk.CalculateDijkstra(matrizAdj3,0);
+
+        System.out.println();
+        MostrarGrafo(matrizAdj4);
+        System.out.println();
 
         Prim prim = new Prim();
-        prim.ArvoreGeradoraMinima(matrizAdj3, 0);
+        prim.ArvoreGeradoraMinima(matrizAdj4, 0);
     }
 
     private static void MostrarGrafo(int[][] grafo)
