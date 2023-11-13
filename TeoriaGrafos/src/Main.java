@@ -1,11 +1,49 @@
+import javax.swing.*;
+import java.awt.*;
+import java.util.Scanner;
+
 public class Main
 {
+    static String title = "Teoria de Grafos:";
+
     public static void main(String[] args)
     {
-        Default();
+        Menu();
+        //Default();
     }
 
-    private static void Default()
+    static void Menu()
+    {
+        Scanner teclado = new Scanner(System.in);
+        String resp = "";
+        int op = -1;
+
+
+
+        op = JOptionPane.showConfirmDialog(null, "Deseja criar uma matriz personalizada?",
+                title, JOptionPane.YES_NO_OPTION);
+
+        switch(op)
+        {
+            case 0:
+                int[][] novoGrafo;
+                int qntVertices;
+                resp = JOptionPane.showInputDialog(null, "Informe a quantidade de vértices do grafo.",
+                        title, JOptionPane.QUESTION_MESSAGE);
+
+                qntVertices = Integer.parseInt(resp);
+
+                novoGrafo = CriarGrafo(qntVertices);
+                MostrarGrafo(novoGrafo);
+
+                break;
+            case 1:
+                Default();
+                break;
+        }
+    }
+
+    static void Default()
     {
         final int[][] matrizAdj1 =
                 {{0, 1, 1, 1, 0, 0, 1,0},
@@ -68,6 +106,45 @@ public class Main
 
         Prim prim = new Prim();
         prim.ArvoreGeradoraMinima(matrizAdj4, 0);
+    }
+
+    static int[][] CriarGrafo(int qntVertices)
+    {
+        int[][] grafo = new int[qntVertices][qntVertices];
+
+        String message = "Informe as adjacências do vértice ";
+        String adjString;
+        String[] adjSplit;
+
+        for(int i = 0; i < qntVertices; i++)
+        {
+            adjString = JOptionPane.showInputDialog(null, message + i + " (ex.: 1,1,0):",
+                    title, JOptionPane.QUESTION_MESSAGE);
+
+            adjString.replace(" ", "");
+            adjSplit = adjString.split(",");
+
+            while(adjSplit.length < qntVertices)
+            {
+                JOptionPane.showMessageDialog(null, "As adjacências do vértice devem ter " +
+                                "a mesma quantidade que a quantidade de vértices!" +
+                                "\nVerifique se não se esqueceu de informa alguma adjacência.",
+                        title, JOptionPane.ERROR_MESSAGE);
+
+                adjString = JOptionPane.showInputDialog(null, message + i + " (ex.: 1,1,0):",
+                        title, JOptionPane.QUESTION_MESSAGE);
+
+                adjString.replace(" ", "");
+                adjSplit = adjString.split(",");
+            }
+
+            for(int j = 0; j < qntVertices; j++)
+            {
+                grafo[i][j] = Integer.parseInt(adjSplit[j]);
+            }
+        }
+
+        return grafo;
     }
 
     private static void MostrarGrafo(int[][] grafo)
