@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,27 +66,25 @@ public class Dijkstra {
     }
 
     void Imprimir(int[] cost, int[] antecessor, int qntVertices) {
-        System.out.println("Algoritmo de Dijkstra:");
+        String impVertice= "";
+        String impCost= "";
+        String impAntecesor="";
 
-        System.out.print("Vértice:    | ");
         for (int i = 0; i < qntVertices; i++) {
-            System.out.print(i + " ");
+            impVertice += i+" ";
         }
 
-        System.out.println();
-
-        System.out.print("Custo:      | ");
         for (int i = 0; i < qntVertices; i++) {
-            System.out.print(cost[i] + " ");
+            impCost+= cost[i]+" ";
         }
 
-        System.out.println();
-
-        System.out.print("Antecessor: | ");
         for (int i = 0; i < qntVertices; i++) {
-            System.out.print(antecessor[i] + " ");
+            impAntecesor += antecessor[i] + " ";
         }
 
-        System.out.println();
+        JOptionPane.showMessageDialog(null, "Vértice:    | "+impVertice+
+                "\n"+"Custo:      | "+impCost+
+                "\n"+"Antecessor: | "+impAntecesor
+                ,"Algoritimo de Dijkstra",JOptionPane.INFORMATION_MESSAGE);
     }
 }

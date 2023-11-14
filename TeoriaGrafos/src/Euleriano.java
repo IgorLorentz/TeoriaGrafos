@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class Euleriano{
     // verifica o grau do vértice
     public void CountDegree(int [][] matriz){
@@ -36,8 +38,10 @@ public class Euleriano{
         System.out.println("Grafo Euleriano:");
 
         if(eulerian == true)
-            System.out.println("O grafo é euleriano!");
+            JOptionPane.showMessageDialog(null, "O grafo é euleriano!","Algoritimo de Dijkstra", JOptionPane.INFORMATION_MESSAGE);
         else
-            System.out.println("O grafo não é euleriano!");
+            JOptionPane.showMessageDialog(null, "O grafo não é euleriano!","Algoritimo de Dijkstra", JOptionPane.INFORMATION_MESSAGE);
+
+
     }
 }

@@ -4,27 +4,27 @@ import java.util.Scanner;
 
 public class Main
 {
+    static String vertice;
+    static Scanner teclado = new Scanner(System.in);
+    static String resp = "";
+    static int op = -1;
+    static Graph g = new Graph();
     static String title = "Teoria de Grafos:";
 
     public static void main(String[] args)
     {
-        Menu();
+        MenuGraph();
         //Default();
     }
 
-    static void Menu()
+    static void MenuGraph()
     {
-        Scanner teclado = new Scanner(System.in);
-        String resp = "";
-        int op = -1;
-
-
-
         op = JOptionPane.showConfirmDialog(null, "Deseja criar uma matriz personalizada?",
                 title, JOptionPane.YES_NO_OPTION);
 
         switch(op)
         {
+            //Novo Grafo
             case 0:
                 int[][] novoGrafo;
                 int qntVertices;
@@ -33,16 +33,64 @@ public class Main
 
                 qntVertices = Integer.parseInt(resp);
 
-                novoGrafo = CriarGrafo(qntVertices);
-                MostrarGrafo(novoGrafo);
+                novoGrafo = g.CriarGrafo(qntVertices);
+                g.MostrarGrafo(novoGrafo);
 
+                MenuFunctions(novoGrafo);
                 break;
+            //Grafos default
             case 1:
                 Default();
                 break;
         }
+
     }
 
+    static void MenuFunctions(int[][] g){
+        resp = JOptionPane.showInputDialog(null, "Qual operação deseja fazer?" +
+                        "\n1- Euleriano" +
+                        "\n2- Busca em aplitude" +
+                        "\n3- Dijkstra" +
+                        "\n4- Prim" +
+                        "\n0- Sair",
+                title, JOptionPane.QUESTION_MESSAGE);
+
+        switch (Integer.parseInt(resp)){
+
+            //Euleriano
+            case 1:
+                Euleriano eulerian = new Euleriano();
+                eulerian.CountDegree(g);
+                break;
+            //Busca em amplitude
+            case 2:
+                BreathFirstSearch bfs = new BreathFirstSearch();
+
+                vertice = JOptionPane.showInputDialog(null, "Informe o vértice inicial.",
+                        title, JOptionPane.QUESTION_MESSAGE);
+
+                bfs.Bucar(g, Integer.parseInt(vertice));
+                break;
+            //Dijkstra
+            case 3:
+                Dijkstra djk = new Dijkstra();
+
+                vertice = JOptionPane.showInputDialog(null, "Informe o vértice inicial.",
+                        title, JOptionPane.QUESTION_MESSAGE);
+
+                djk.CalculateDijkstra(g,Integer.parseInt(vertice));
+                break;
+            //Prim
+            case 4:
+                Prim prim = new Prim();
+
+                vertice = JOptionPane.showInputDialog(null, "Informe o vértice inicial.",
+                        title, JOptionPane.QUESTION_MESSAGE);
+
+                prim.ArvoreGeradoraMinima(g, Integer.parseInt(vertice));
+                break;
+        }
+    }
     static void Default()
     {
         final int[][] matrizAdj1 =
@@ -80,91 +128,35 @@ public class Main
                 {3, 0, 6, 0, 0, 2},
                 {0, 0, 3, 6, 2, 0}};
 
-        MostrarGrafo(matrizAdj1);
+        g.MostrarGrafo(matrizAdj1);
         System.out.println();
 
         Euleriano eulerian = new Euleriano();
         eulerian.CountDegree(matrizAdj1);
 
         System.out.println();
-        MostrarGrafo(matrizAdj2);
+        g.MostrarGrafo(matrizAdj2);
         System.out.println();
 
         BreathFirstSearch bfs = new BreathFirstSearch();
         bfs.Bucar(matrizAdj2, 0);
 
         System.out.println();
-        MostrarGrafo(matrizAdj3);
+        g.MostrarGrafo(matrizAdj3);
         System.out.println();
 
         Dijkstra djk = new Dijkstra();
         djk.CalculateDijkstra(matrizAdj3,0);
 
         System.out.println();
-        MostrarGrafo(matrizAdj4);
+        g.MostrarGrafo(matrizAdj4);
         System.out.println();
 
         Prim prim = new Prim();
         prim.ArvoreGeradoraMinima(matrizAdj4, 0);
     }
 
-    static int[][] CriarGrafo(int qntVertices)
-    {
-        int[][] grafo = new int[qntVertices][qntVertices];
 
-        String message = "Informe as adjacências do vértice ";
-        String adjString;
-        String[] adjSplit;
 
-        for(int i = 0; i < qntVertices; i++)
-        {
-            adjString = JOptionPane.showInputDialog(null, message + i + " (ex.: 1,1,0):",
-                    title, JOptionPane.QUESTION_MESSAGE);
 
-            adjString.replace(" ", "");
-            adjSplit = adjString.split(",");
-
-            while(adjSplit.length < qntVertices)
-            {
-                JOptionPane.showMessageDialog(null, "As adjacências do vértice devem ter " +
-                                "a mesma quantidade que a quantidade de vértices!" +
-                                "\nVerifique se não se esqueceu de informa alguma adjacência.",
-                        title, JOptionPane.ERROR_MESSAGE);
-
-                adjString = JOptionPane.showInputDialog(null, message + i + " (ex.: 1,1,0):",
-                        title, JOptionPane.QUESTION_MESSAGE);
-
-                adjString.replace(" ", "");
-                adjSplit = adjString.split(",");
-            }
-
-            for(int j = 0; j < qntVertices; j++)
-            {
-                grafo[i][j] = Integer.parseInt(adjSplit[j]);
-            }
-        }
-
-        return grafo;
-    }
-
-    private static void MostrarGrafo(int[][] grafo)
-    {
-        System.out.print(" ");
-        for(int i = 0; i < grafo.length; i++)
-        {
-            System.out.print("  " + i);
-        }
-
-        for(int i = 0; i < grafo.length; i++)
-        {
-            System.out.println();
-            System.out.print(i + " ");
-            for(int j = 0; j < grafo.length; j++)
-            {
-                System.out.printf("[%d]", grafo[i][j]);
-            }
-        }
-
-        System.out.println();
-    }
 }
