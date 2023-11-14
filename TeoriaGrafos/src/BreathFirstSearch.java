@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -39,33 +40,30 @@ public class BreathFirstSearch
 
     void Imprimir(boolean[] visitado, int[] antecessor, int qntVertices)
     {
-        System.out.println("Busca em Amplitude:");
+        String title = "Busca em Amplitude:";
+        String verticeStr = "Vértice:    | ";
+        String visitadoStr = "Visitado:   | ";
+        String antecessorStr = "Antecessor: | ";
 
-        System.out.print("Vértice:    | ");
         for(int i = 0; i < qntVertices; i++)
         {
-            System.out.print(i + " ");
+            verticeStr += i + " ";
         }
 
-        System.out.println();
-
-        System.out.print("Visitado:   | ");
         for(int i = 0; i < qntVertices; i++)
         {
             if(visitado[i])
-                System.out.print("V ");
+                visitadoStr += "V ";
             else
-                System.out.print("F ");
+                visitadoStr += "F ";
         }
 
-        System.out.println();
-
-        System.out.print("Antecessor: | ");
         for(int i = 0; i < qntVertices; i++)
         {
-            System.out.print(antecessor[i] + " ");
+            antecessorStr += antecessor[i] + " ";
         }
 
-        System.out.println();
+        JOptionPane.showMessageDialog(null, verticeStr + "\n" + visitadoStr +
+                "\n" + antecessorStr);
     }
 }

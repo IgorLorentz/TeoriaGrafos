@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -84,30 +85,27 @@ public class Prim
 
     void Imprimir(Queue ordem, int[] antecessor, int qntCaminhos)
     {
-        System.out.println("Algoritmo de Prim:");
+        String title = "Algoritmo de Prim:";
+        String verticeStr = "Vértice:    | ";
+        String ordemStr = "Ordem:      | ";
+        String antecessorStr = "Antecessor: | ";
 
-        System.out.print("Vértice:    | ");
         for (int i = 0; i < qntCaminhos; i++)
         {
-            System.out.print(i + " ");
+            verticeStr += i + " ";
         }
 
-        System.out.println();
-
-        System.out.print("Ordem:      | ");
         for(int i = 0; i < qntCaminhos; i++)
         {
-            System.out.print(ordem.poll() + " ");
+            ordemStr += ordem.poll() + " ";
         }
 
-        System.out.println();
-
-        System.out.print("Antecessor: | ");
         for(int i = 0; i < antecessor.length; i++)
         {
-            System.out.print(antecessor[i] + " ");
+            antecessorStr += antecessor[i] + " ";
         }
 
-        System.out.println();
+        JOptionPane.showMessageDialog(null, verticeStr + "\n" + ordemStr +
+                "\n" + antecessorStr);
     }
 }
