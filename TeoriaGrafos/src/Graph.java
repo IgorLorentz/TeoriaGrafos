@@ -44,22 +44,26 @@ public class Graph {
 
     public void MostrarGrafo(int[][] grafo)
     {
-        System.out.print(" ");
+        String title = "Teoria de Grafos:";
+        String message = "";
+
+        message += " ";
         for(int i = 0; i < grafo.length; i++)
         {
-            System.out.print("  " + i);
+            message += "  " + i;
         }
 
         for(int i = 0; i < grafo.length; i++)
         {
-            System.out.println();
-            System.out.print(i + " ");
+            message += "\n";
+            message += i + " ";
+
             for(int j = 0; j < grafo.length; j++)
             {
-                System.out.printf("[%d]", grafo[i][j]);
+                message += "[" + grafo[i][j] + "]";
             }
         }
 
-        System.out.println();
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
     }
 }

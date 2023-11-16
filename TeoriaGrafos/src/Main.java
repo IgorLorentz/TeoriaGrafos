@@ -1,6 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
-import java.util.Scanner;
 
 public class Main
 {
@@ -42,35 +40,27 @@ public class Main
                 Default();
                 break;
         }
-
     }
 
     static void MenuFunctions(int[][] g){
-        int respInt = -1;
+        final String[] options = {"Euleriano", "Buscam em amplitude", "Dijkstra", "Prim", "Sair"};
         String message = "Informe o vértice inicial.";
 
         do {
-            resp = JOptionPane.showInputDialog(null, "Qual operação deseja fazer?" +
-                            "\n1- Euleriano" +
-                            "\n2- Busca em aplitude" +
-                            "\n3- Dijkstra" +
-                            "\n4- Prim" +
-                            "\n0- Sair",
-                    title, JOptionPane.QUESTION_MESSAGE);
+            op = JOptionPane.showOptionDialog(null, null, title,
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[4]);
 
-            respInt = Integer.parseInt(resp);
-
-            if(respInt != 0)
+            if(op != 4)
             {
-                switch (respInt){
+                switch (op){
 
                     //Euleriano
-                    case 1:
+                    case 0:
                         Euleriano eulerian = new Euleriano();
                         eulerian.CountDegree(g);
                         break;
                     //Busca em amplitude
-                    case 2:
+                    case 1:
                         BreathFirstSearch bfs = new BreathFirstSearch();
 
                         vertice = JOptionPane.showInputDialog(null, message,
@@ -79,7 +69,7 @@ public class Main
                         bfs.Bucar(g, Integer.parseInt(vertice));
                         break;
                     //Dijkstra
-                    case 3:
+                    case 2:
                         Dijkstra djk = new Dijkstra();
 
                         vertice = JOptionPane.showInputDialog(null, message,
@@ -88,7 +78,7 @@ public class Main
                         djk.CalculateDijkstra(g,Integer.parseInt(vertice));
                         break;
                     //Prim
-                    case 4:
+                    case 3:
                         Prim prim = new Prim();
 
                         vertice = JOptionPane.showInputDialog(null, message,
@@ -99,7 +89,7 @@ public class Main
                 }
             }
         }
-        while(respInt != 0);
+        while(op != 4);
     }
 
     static void Default()
@@ -139,15 +129,22 @@ public class Main
                 {3, 0, 6, 0, 0, 2},
                 {0, 0, 3, 6, 2, 0}};
 
+        g.MostrarGrafo(matrizAdj1);
 
         Euleriano eulerian = new Euleriano();
         eulerian.CountDegree(matrizAdj1);
 
+        g.MostrarGrafo(matrizAdj2);
+
         BreathFirstSearch bfs = new BreathFirstSearch();
         bfs.Bucar(matrizAdj2, 0);
 
+        g.MostrarGrafo(matrizAdj3);
+
         Dijkstra djk = new Dijkstra();
         djk.CalculateDijkstra(matrizAdj3,0);
+
+        g.MostrarGrafo(matrizAdj4);
 
         Prim prim = new Prim();
         prim.ArvoreGeradoraMinima(matrizAdj4, 0);
