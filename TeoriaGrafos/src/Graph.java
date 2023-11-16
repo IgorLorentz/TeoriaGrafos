@@ -2,6 +2,7 @@ import javax.swing.*;
 
 public class Graph {
     static String title = "Teoria de Grafos:";
+
     public int[][] CriarGrafo(int qntVertices)
     {
         int[][] grafo = new int[qntVertices][qntVertices];
@@ -40,6 +41,7 @@ public class Graph {
 
         return grafo;
     }
+
     public void MostrarGrafo(int[][] grafo)
     {
         System.out.print(" ");
@@ -60,5 +62,4 @@ public class Graph {
 
         System.out.println();
     }
-
 }

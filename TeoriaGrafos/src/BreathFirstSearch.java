@@ -64,6 +64,6 @@ public class BreathFirstSearch
         }
 
         JOptionPane.showMessageDialog(null, verticeStr + "\n" + visitadoStr +
-                "\n" + antecessorStr);
+                "\n" + antecessorStr, title, JOptionPane.INFORMATION_MESSAGE);
     }
 }

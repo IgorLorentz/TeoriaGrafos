@@ -85,6 +85,6 @@ public class Dijkstra {
         JOptionPane.showMessageDialog(null, "Vértice:    | "+impVertice+
                 "\n"+"Custo:      | "+impCost+
                 "\n"+"Antecessor: | "+impAntecesor
-                ,"Algoritimo de Dijkstra",JOptionPane.INFORMATION_MESSAGE);
+                ,"Algoritimo de Dijkstra:",JOptionPane.INFORMATION_MESSAGE);
     }
 }

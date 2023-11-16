@@ -86,8 +86,8 @@ public class Prim
     void Imprimir(Queue ordem, int[] antecessor, int qntCaminhos)
     {
         String title = "Algoritmo de Prim:";
-        String verticeStr = "Vértice:    | ";
-        String ordemStr = "Ordem:      | ";
+        String verticeStr = "Vértice:       | ";
+        String ordemStr = "Ordem:          | ";
         String antecessorStr = "Antecessor: | ";
 
         for (int i = 0; i < qntCaminhos; i++)
@@ -106,6 +106,6 @@ public class Prim
         }
 
         JOptionPane.showMessageDialog(null, verticeStr + "\n" + ordemStr +
-                "\n" + antecessorStr);
+                "\n" + antecessorStr, title, JOptionPane.INFORMATION_MESSAGE);
     }
 }

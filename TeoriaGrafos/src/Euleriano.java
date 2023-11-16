@@ -35,13 +35,9 @@ public class Euleriano{
 
     void Imprimir(boolean eulerian)
     {
-        System.out.println("Grafo Euleriano:");
-
         if(eulerian == true)
-            JOptionPane.showMessageDialog(null, "O grafo é euleriano!","Algoritimo de Dijkstra", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "O grafo é euleriano!","Grafo Euleriano:", JOptionPane.INFORMATION_MESSAGE);
         else
-            JOptionPane.showMessageDialog(null, "O grafo não é euleriano!","Algoritimo de Dijkstra", JOptionPane.INFORMATION_MESSAGE);
-
-
+            JOptionPane.showMessageDialog(null, "O grafo não é euleriano!","Grafo Euleriano:", JOptionPane.INFORMATION_MESSAGE);
     }
 }
